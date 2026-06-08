@@ -13,17 +13,20 @@ pipeline{
             }
         }
         stage('DockerLogin'){
-            withCredentials([
+            steps{
+                withCredentials([
                     usernamePassword(
                         credentialsId:'docker-creds',
                         usernameVariable:'USER',
                         passwordVariable:'PASS'
                     )
                 ]){
-                bat ''' 
-                    echo %PASS% | docker login -u %USER% --password-stdin
-                '''
+                    bat ''' 
+                        echo %PASS% | docker login -u %USER% --password-stdin
+                        '''
+                }
             }
+            
         }
         stage('BuildDockerImageAndPush'){
             steps{
