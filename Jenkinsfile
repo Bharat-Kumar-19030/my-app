@@ -36,7 +36,7 @@ pipeline{
         }
         stage('Deploy'){
             steps{
-                sh 'docker service create -d -p 5000:5000 my-app:latest'
+                sh 'docker service create -d -p 5000:5000 {%USER%}/my-app:latest'
             }
         }
     }
