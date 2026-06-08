@@ -30,7 +30,7 @@ pipeline{
         }
         stage('BuildDockerImageAndPush'){
             steps{
-                bat 'docker build -t bharatkumar19030/my-app:latest .'
+                bat 'docker build -t bharatkumar19030/my-app:latest ./my-app'
                 bat 'docker push bharatkumar19030/my-app:latest'
             }
         }
