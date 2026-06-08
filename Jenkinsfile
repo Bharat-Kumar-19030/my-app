@@ -14,12 +14,12 @@ pipeline{
         }
         stage('DockerLogin'){
             withCredentials([
-                usernamePassword(
-                    credentialsId:'docker-creds'
-                    usernameVariable: USER
-                    passwordVariable: PASS
-                )
-            ]){
+                    usernamePassword(
+                        credentialsId:'docker-creds',
+                        usernameVariable:'USER',
+                        passwordVariable:'PASS'
+                    )
+                ]){
                 bat ''' 
                     echo %PASS% | docker login -u %USER% --password-stdin
                 '''
